@@ -19,5 +19,4 @@ test:
 production:
   <<: *default
   database: login_production
-  username: postgres
-  password: bryan6932
+  username: ubuntu
