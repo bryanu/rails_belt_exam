@@ -1,0 +1,31 @@
+@import "materialize";
+
+.wrapperlogin {
+  padding: 0 80px;
+  margin: 50px auto 0 auto;
+}
+
+.wrapperlogin h1 {
+  margin: 0 0 12px 0;
+  font-weight: bold;
+  color: grey;
+}
+
+.underline {
+  border-bottom: 3px solid #26a69a;
+}
+
+nav .nav-wrapper {
+  margin-top: 7px;
+  box-shadow: 4px 4px 3px grey;
+}
+
+ul.tabs {
+  // line-height: 190px;
+  height: 95px;
+}
+
+.tabs .tab a {
+  line-height: 95px;
+  height: 95px;
+}

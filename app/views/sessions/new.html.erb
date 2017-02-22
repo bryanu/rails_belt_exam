@@ -1,0 +1,115 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">&nbsp; Login & Registration</a>
+  </div>
+</nav>
+
+
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#test1"><h1>Login</h1></a></li>
+      <li class="tab col s5"><a href="#test2"><h1>Registration</h1></a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row wrapperlogin">
+
+  <div id="test1" class="col s12">
+
+    <form class="col s6" action="/sessions/login" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+
+      <div class="row">
+        <div class="col s10">
+          <% if flash[:email_error] %>
+            <p>
+              <%= flash[:email_error]%>
+            </p>
+            </br>
+            <% end %>
+              <label for="email">Email:</label>
+              <input type="text" name="user[email]">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col s10">
+          <% if flash[:password_error] %>
+            <p>
+              <%= flash[:password_error]%>
+            </p>
+            </br>
+            <% end %>
+              <label for="password">Password:</label>
+              <input type="password" name="user[password]">
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <input class="btn" type="submit" name="submit" value="Login">
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |notice| %>
+      <p>
+        <%= notice %>
+      </p>
+      <% end %>
+        <% end %>
+
+          <div id="test2" class="col s12">
+            <form class="col s6" action="/users/create" method="post">
+              <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+              <div class="row">
+                <div class="col s12">
+                  <label for="first_name">First Name:</label>
+                  <input class="form-control" type="text" name="user[first_name]" value="">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                  <label for="last_name">Last Name:</label>
+                  <input class="form-control" type="text" name="user[last_name]" value="">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                  <label for="email">Email:</label>
+                  <input class="form-control" type="text" name="user[email]" value="">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                  <label for="password">Password:</label>
+                  <input class="form-control" type="password" name="user[password]" value="">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                  <label for="password_confirmation">Password Confirmation:</label>
+                  <input type="password" name="user[password_confirmation]" value="">
+                </div>
+              </div>
+
+              <div>
+                <input class="btn" type="submit" name="submit" value="Register">
+              </div>
+            </form>
+
+          </div>
+
+</div>
