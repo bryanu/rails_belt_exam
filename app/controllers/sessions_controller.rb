@@ -1,28 +1,32 @@
 class SessionsController < ApplicationController
+
   def new
+    render URL_NEWUSER
   end
 
   def login
-    user = User.find_by_email(params[:user][:email])
-    if user
-      if user.try(:authenticate, params[:user][:password])
-        session[:user_id] = user.id
-        redirect_to '/dashboard/index'
-      else
-        flash[:password_error] = "Incorrect password or email address"
-        redirect_to '/sessions/new'
-      end
+    if !user = User.find_by(email: params_email)
+      flash[:email_error] = "Email address does not exist, please register."
+      redirect_to URL_NEWUSER
     else
-      flash[:email_error] = "Email address not found"
-      redirect_to '/sessions/new'
+      if user.authenticate(params[:user][:password])
+        session[:userID] = user.id
+        redirect_to URL_SONGS
+      else
+        flash[:password_error] = "Invalid credentials!"
+        redirect_to URL_NEWUSER
+      end
     end
-
   end
 
   def logout
-    session[:user_id] = nil
-    @current_user = nil
-    redirect_to '/sessions/new'
+    @currUser = nil
+    session[:userID] = nil
+    redirect_to URL_NEWUSER
+  end
+
+  def params_email
+    params[:user][:email].downcase
   end
 
 end

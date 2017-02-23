@@ -1,0 +1,35 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">&nbsp; Playlist</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>Welcome, <%= @currUser.first_name %> <%= @currUser.last_name %>!</li>
+      <li class="headerlogout"><a href="/songs">Dashboard</a></li>
+      <li class="headerlogout"><a href="/sessions/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrappersongsshow">
+  <h4>Others who have added:</h4>
+  <span><h1><%= @song.title %></h1><h5>by</h5><h1><%= @song.artist %></h1></span>
+  <div class="tablewrapper">
+    <table class="highlight bordered">
+      <thead>
+        <th>Name</th>
+        <th>Times Added</th>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <a href="/lists/<%= user.user.id %>/show">
+                <%= user.user.first_name %> <%= user.user.last_name %>
+              </a>
+            </td>
+            <td><%= user.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

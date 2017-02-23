@@ -1,31 +1,73 @@
 @import "materialize";
 
+.errormsg {
+    color: red;
+    margin-left: 7px;
+}
+
+.headerlogout {
+  padding-left: 27px;
+}
+
 .wrapperlogin {
-  padding: 0 80px;
-  margin: 50px auto 0 auto;
+    padding: 0 80px;
+    margin: 50px auto 0;
 }
 
 .wrapperlogin h1 {
-  margin: 0 0 12px 0;
-  font-weight: bold;
-  color: grey;
+    margin: 0 0 12px;
+    font-weight: bold;
+    color: grey;
 }
 
 .underline {
-  border-bottom: 3px solid #26a69a;
+    border-bottom: 3px solid #26a69a;
 }
 
 nav .nav-wrapper {
-  margin-top: 7px;
-  box-shadow: 4px 4px 3px grey;
+    margin-top: 7px;
+    box-shadow: 4px 4px 3px grey;
 }
 
-ul.tabs {
-  // line-height: 190px;
-  height: 95px;
+.wrappersongslist {
+  padding: 0 30px;
+  margin: 50px auto 0;
 }
 
-.tabs .tab a {
-  line-height: 95px;
-  height: 95px;
+.wrapperlistsshow {
+ margin: 50px 0 0 50px;
+  width: 80%;
+}
+
+.wrappersongslist .createsong {
+  margin: 20px 0 0 10px;
+}
+
+.wrappersongsshow .tablewrapper {
+  margin: 20px 0 0 20px;
+  width: 70%;
+}
+
+.wrappersongsshow {
+    margin: 40px auto 0;
+}
+
+.wrappersongsshow h1,
+h5 {
+    margin: 0;
+    display: inline;
+}
+
+.wrappersongsshow h1 {
+    margin: 0 20px;
+}
+
+.wrappersongsshow h4 {
+    margin: 10px 0 0;
+    color: grey;
+}
+p.err {
+  color: red;
+  margin: 0 0 0 10px;;
+
 }

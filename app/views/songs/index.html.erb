@@ -1,0 +1,73 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">&nbsp; Playlist</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>Welcome, <%= @currUser.first_name %> <%= @currUser.last_name %>!</li>
+      <li class="headerlogout"><a href="/sessions/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrappersongslist">
+    <div class="row">
+        <h3>Available Songs in our hub:</h3>
+        <table class="highlight bordered">
+            <thead>
+                <th>Artist</th>
+                <th>Song Title</th>
+                <th>Added to Playlist</th>
+                <th style="width: 220px; text-align: Center">Action</th>
+            </thead>
+            <tbody>
+                <% @songs.each do |song| %>
+                <tr>
+                  <td><%= song.artist %></td>
+                  <td>
+                    <a href='/songs/<%= song.id %>/show'><%= song.title %></a>
+                  </td>
+                  <td style="width: 140px; text-align: Center">
+                    <%= song.lists.sum(:count) %>
+                  </td>
+                  <td style="width: 220px; text-align: Center">
+                    <form method="post" action="/lists/<%= song.id %>/add">
+                      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                      <input type="submit" class="btn" value="Add to Playlist">
+                    </form>
+                  </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
+  <div class="row">
+     <div class="col s6 createsong">
+      <h4>Add new song</h4>
+      <form class="form form-horizontal" action="/songs/add" method="post">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+        <div class="row">
+          <div class="col s12">
+            <label for="artist">Artist:</label>
+            <% if flash[:artist] %><div class="errormsg"><%= flash[:artist] %></div><% end %>
+            <input class="form-control" type="text" name="song[artist]" value="">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <label class="form-label col-sm-3" for="title">Title:</label>
+            <% if flash[:title] %><div class="errormsg"><%= flash[:title] %></div><% end %>
+            <input class="form-control" type="text" name="song[title]" value="">
+          </div>
+        </div>
+
+        <div class="row">
+            <input class="btn createsong" type="submit" name="submit" value="Create">
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
